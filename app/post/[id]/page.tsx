@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function PostDetail() {
   const { id } = useParams();
@@ -27,6 +28,9 @@ export default function PostDetail() {
       <h1>{(post as { title: string }).title}</h1>
       <p className="text-muted">{new Date((post as { createdAt: string }).createdAt).toLocaleDateString('id-ID')}</p>
       <p>{(post as { content: string }).content}</p>
+      <Link href={`/edit/${id}`} className="btn btn-primary me-2">
+        Edit
+      </Link>
       <button onClick={handleDelete} className="btn btn-danger">
         Delete
       </button>
